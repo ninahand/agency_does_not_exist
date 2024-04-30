@@ -2,6 +2,10 @@ let agencyList = ['005', '013', '089', '070', '015', '019', '020', '047', '080',
 
 let imageContainer = document.querySelector('.image-container');
 
+function randomNote() {
+    const notes = ['C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2']; 
+    return notes[Math.floor(Math.random() * notes.length)];
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     const figureWrapper = document.createElement('figure');
@@ -93,10 +97,32 @@ let rowIncrement = 1;
 let columnCount = 1;
 let totalCount = 1;
 
-document.addEventListener('click', function() {
-    totalCount +=  rowIncrement
-    columnCount = totalCount / rowIncrement;
 
+function newSynth(){
+    const synth = new Tone.Synth({
+        oscillator:{
+            type: 'sine'
+        }, 
+        envelope:{
+            attack: 0.1,
+            decay: 0.2,
+            sustain: 0.5,
+            release: 1
+        }
+
+    }).toDestination();
+
+    synth.volume.value = 15;
+
+    synth.triggerAttackRelease(randomNote(), "5");
+}
+
+document.addEventListener('click', function() {
+ 
+    newSynth();
+    
+    totalCount += rowIncrement;
+    columnCount = totalCount / rowIncrement;
 
     let futureRowIncrement = rowIncrement + 1;
     let futureColumnCount = totalCount / futureRowIncrement
@@ -109,15 +135,12 @@ document.addEventListener('click', function() {
 
     console.log('rowIncrement: ' + rowIncrement, 'columnCount: ' + columnCount)
 
-    for ( let i = 0; i < rowIncrement; i++ ) {
+    for (let i = 0; i < rowIncrement; i++) {
         const figureWrapper = document.createElement('figure');
         fetchRandomAgency(figureWrapper);
         fetchRandomImage(figureWrapper); 
-
     }
-
 });
-
 function updateGridRules (rows, cols) {
     imageContainer.style.gridTemplateRows = `repeat(${rows}, ${100 / rows}vh)`;
     imageContainer.style.gridTemplateColumns = `repeat(${cols}, ${100 / cols}vw)`;
