@@ -117,7 +117,24 @@ function newSynth(){
 }
 
 document.addEventListener('click', function() {
- 
+    function newSynth(){
+        const synth = new Tone.Synth({
+            oscillator:{
+                type: 'sine'
+            }, 
+            envelope:{
+                attack: 0.1,
+                decay: 0.2,
+                sustain: 0.5,
+                release: 1
+            }
+    
+        }).toDestination();
+    
+        synth.volume.value = 15;
+    
+        synth.triggerAttackRelease(randomNote(), "5");
+    }
     newSynth();
     
     totalCount += rowIncrement;
