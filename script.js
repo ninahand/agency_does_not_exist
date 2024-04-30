@@ -56,8 +56,8 @@ function fetchRandomAgency(figure) {
 
     
         let errorText = document.createElement("div");
-        errorText.classList.add("error-text"); // Adding class to errorText
-        errorText.innerText = "ERROR: AGENCY 007:'DEPARTMENT OF DEFENSE' DOES NOT EXIST"; // Use the error message provided by the catch block
+        errorText.classList.add("error-text"); 
+        errorText.innerText = "ERROR: AGENCY 007:'DEPARTMENT OF DEFENSE' DOES NOT EXIST"; 
 
         figure.appendChild(errorText);
 
@@ -68,7 +68,6 @@ function fetchRandomAgency(figure) {
 }
 
 function fetchRandomImage (figure) {
-    console.log('hello')
     fetch("./data.json")
     .then((response) => response.json())
     .then((items) => {
@@ -145,6 +144,23 @@ function updateGridRules (rows, cols) {
     imageContainer.style.gridTemplateRows = `repeat(${rows}, ${100 / rows}vh)`;
     imageContainer.style.gridTemplateColumns = `repeat(${cols}, ${100 / cols}vw)`;
 
+    // Calculate the font size based on the number of rows and columns
+    const totalCells = rows * cols;
+    const fontSize = 50 / Math.sqrt(totalCells); // Adjust the divisor as needed
+
+    // Apply the calculated font size to the agency captions
+    const agencyCaptions = document.querySelectorAll('.agency-caption');
+    const errorTexts = document.querySelectorAll('.error-text')
+
+    agencyCaptions.forEach(caption => {
+        caption.style.fontSize = fontSize + 'px';
+
+    errorTexts.forEach(text=> {
+        text.style.fontSize = fontSize + 20 + 'px'
+        errorText.style.textAlign = 'justify'; 
+
+    })
+    });
 }
 
 /*
