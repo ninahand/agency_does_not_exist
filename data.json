@@ -1,0 +1,260 @@
+[
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-1.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-2.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-3.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-4.jpg"
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-5.jpg"
+    },
+    {
+        "color": "red",
+        "agency": "not found",
+        "path": "./assets/machine-6.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-7.jpg"
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-8.jpg"
+    },
+    {
+        "color": "red",
+        "agency": "not found",
+        "path": "./assets/machine-9.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-10.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-11.jpg"
+      
+    },
+    {
+        "color": "red",
+        "agency": "not found",
+        "path": "./assets/machine-12.jpg"
+      
+    },
+     {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-13.jpg"
+      
+    }, 
+    {
+        "color": "red",
+        "agency": "not found",
+        "path": "./assets/machine-14.jpg"
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-15.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-16.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-17.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-18.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-19.jpg"
+      
+    },
+    {
+        "color": "red",
+        "agency": "not found",
+        "path": "./assets/machine-20.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-21.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-22.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-23.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-24.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-25.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-26.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-27.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-28.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-29.jpg"
+      
+    },
+    {
+        "color": "red",
+        "agency": "not found",
+        "path": "./assets/machine-30.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-31.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-32.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-33.jpg"
+      
+    },
+    {
+        "color": "red",
+        "agency": "not found",
+        "path": "./assets/machine-34.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-35.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-37.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-38.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-39.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-40.jpg"
+    },
+
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-41.jpg"
+      
+    },
+    {
+        "color": "red",
+        "agency": "not found",
+        "path": "./assets/machine-42.jpg"
+      
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-43.jpg"
+    },
+    {
+        "color": "gray",
+        "agency": "found",
+        "path": "./assets/machine-44.jpg"
+      
+    },
+    {
+        "color": "red",
+        "agency": "not found",
+        "path": "./assets/machine-45.jpg"
+      
+    }
+]
