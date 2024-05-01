@@ -10,16 +10,11 @@ function randomNote() {
 
 document.addEventListener("DOMContentLoaded", function() {
     const figureWrapper = document.createElement('figure');
-  
     fetchRandomAgency(figureWrapper);
     fetchRandomImage(figureWrapper);
 
 });
 
-// function updateTotal(){
-//     let runningTotal = document.querySelector(".total") //create this still
-//     runningTotal.innerText = (randomItem.obligated_amount)//
-// }
 
 
 
@@ -96,14 +91,9 @@ function fetchRandomImage (figure) {
     });
 }
 
-// function increaseColumnCount() {
-//     columnCount++;
-//     let imageContainer = document.querySelector('.image-container');
-//     imageContainer.style.gridTemplateColumns = `repeat(${columnCount}, 1fr)`;
-// }
 
 let rowIncrement = 1;
-let columnCount = 1;
+let columnCount = 2;
 let totalCount = 1;
 
 
@@ -115,7 +105,7 @@ document.addEventListener('click', function() {
                 type: 'sine'
             }, 
             envelope:{
-                attack: 0.1,
+                attack: 0.01,
                 decay: 0.2,
                 sustain: 0.1,
                 release: 1
