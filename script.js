@@ -97,24 +97,6 @@ let columnCount = 1;
 let totalCount = 1;
 
 
-function newSynth(){
-    const synth = new Tone.Synth({
-        oscillator:{
-            type: 'sine'
-        }, 
-        envelope:{
-            attack: 0.1,
-            decay: 0.2,
-            sustain: 0.5,
-            release: 1
-        }
-
-    }).toDestination();
-
-    synth.volume.value = 15;
-
-    synth.triggerAttackRelease(randomNote(), "5");
-}
 
 document.addEventListener('click', function() {
     function newSynth(){
@@ -125,7 +107,7 @@ document.addEventListener('click', function() {
             envelope:{
                 attack: 0.1,
                 decay: 0.2,
-                sustain: 0.5,
+                sustain: 0.1,
                 release: 1
             }
     
@@ -133,7 +115,7 @@ document.addEventListener('click', function() {
     
         synth.volume.value = 15;
     
-        synth.triggerAttackRelease(randomNote(), "5");
+        synth.triggerAttackRelease(randomNote(), "2n");
     }
     newSynth();
     
@@ -161,22 +143,19 @@ function updateGridRules (rows, cols) {
     imageContainer.style.gridTemplateRows = `repeat(${rows}, ${100 / rows}vh)`;
     imageContainer.style.gridTemplateColumns = `repeat(${cols}, ${100 / cols}vw)`;
 
-    // Calculate the font size based on the number of rows and columns
     const totalCells = rows * cols;
-    const fontSize = 50 / Math.sqrt(totalCells); // Adjust the divisor as needed
+    const fontSize = 50 / Math.sqrt(totalCells);
 
-    // Apply the calculated font size to the agency captions
     const agencyCaptions = document.querySelectorAll('.agency-caption');
-    const errorTexts = document.querySelectorAll('.error-text')
+    const errorTexts = document.querySelectorAll('.error-text');
 
     agencyCaptions.forEach(caption => {
         caption.style.fontSize = fontSize + 'px';
+    });
 
-    errorTexts.forEach(text=> {
-        text.style.fontSize = fontSize + 20 + 'px'
-        errorText.style.textAlign = 'justify'; 
-
-    })
+    errorTexts.forEach(text => {
+        text.style.fontSize = fontSize + 10 + 'px';
+        text.style.textAlign = 'justify';
     });
 }
 
