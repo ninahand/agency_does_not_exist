@@ -1,6 +1,7 @@
 let agencyList = ['005', '013', '089', '070', '015', '019', '020', '047', '080', '007'];
 
 let imageContainer = document.querySelector('.image-container');
+let totalContainer = document.querySelector('.total-container');
 
 function randomNote() {
     const notes = ['C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2']; 
@@ -9,10 +10,16 @@ function randomNote() {
 
 document.addEventListener("DOMContentLoaded", function() {
     const figureWrapper = document.createElement('figure');
+  
     fetchRandomAgency(figureWrapper);
     fetchRandomImage(figureWrapper);
 
 });
+
+// function updateTotal(){
+//     let runningTotal = document.querySelector(".total") //create this still
+//     runningTotal.innerText = (randomItem.obligated_amount)//
+// }
 
 
 
@@ -23,7 +30,7 @@ function fetchRandomAgency(figure) {
     fetch(API_URL)
     .then((response) => response.json())
     .then((data) => {
-        console.log(data); 
+
 
         let randomIndex = Math.floor(Math.random() * data.results.length);
         let randomItem = data.results[randomIndex];
@@ -48,6 +55,9 @@ function fetchRandomAgency(figure) {
         figure.appendChild(randomAgencyContainer)
       
         imageContainer.appendChild(figure);
+
+
+  
     })
     .catch((error) => {
 
@@ -115,7 +125,7 @@ document.addEventListener('click', function() {
     
         synth.volume.value = 15;
     
-        synth.triggerAttackRelease(randomNote(), "2n");
+        synth.triggerAttackRelease(randomNote(), "5");
     }
     newSynth();
     
@@ -158,6 +168,7 @@ function updateGridRules (rows, cols) {
         text.style.textAlign = 'justify';
     });
 }
+ 
 
 /*
  013 = department of commerce
