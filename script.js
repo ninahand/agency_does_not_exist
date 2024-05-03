@@ -1,4 +1,6 @@
 let agencyList = ['005', '013', '089', '070', '015', '019', '020', '047', '080', '007'];
+let runningTotal = 0; 
+
 
 let imageContainer = document.querySelector('.image-container');
 let totalContainer = document.querySelector('.total-container');
@@ -11,8 +13,9 @@ function randomNote() {
 document.addEventListener("DOMContentLoaded", function() {
     const figureWrapper = document.createElement('figure');
     fetchRandomAgency(figureWrapper);
+    fetchRandomImage(figureWrapper); 
     fetchRandomImage(figureWrapper);
-
+   
 });
 
 
@@ -29,6 +32,12 @@ function fetchRandomAgency(figure) {
 
         let randomIndex = Math.floor(Math.random() * data.results.length);
         let randomItem = data.results[randomIndex];
+
+        let obligatedAmount = parseFloat(randomItem.obligated_amount); 
+        runningTotal += obligatedAmount; 
+        totalContainer.innerText = `$${runningTotal.toFixed(2)}`;
+        console.log('running total', runningTotal)
+
         
         let randomAgencyContainer = document.createElement("figcaption");
         randomAgencyContainer.classList.add("agency-caption");
@@ -93,7 +102,7 @@ function fetchRandomImage (figure) {
 
 
 let rowIncrement = 1;
-let columnCount = 2;
+let columnCount = 1;
 let totalCount = 1;
 
 
@@ -106,7 +115,7 @@ document.addEventListener('click', function() {
             }, 
             envelope:{
                 attack: 0.01,
-                decay: 0.2,
+                decay: 0.6,
                 sustain: 0.1,
                 release: 1
             }

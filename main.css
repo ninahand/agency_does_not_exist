@@ -45,7 +45,6 @@ body {
 
 }
 .error-image::after{
-
     content: "";
     position: absolute;
     top: 0;
@@ -57,5 +56,14 @@ body {
 
 }
 .total-container{
-    
+    z-index: 10000;
+    position: fixed;
+    margin-left: 2%;
+    top: 0;
+    left: 0;
+    transform: translateY(600%);
+    font-family: arial;
+    color: red;
+    font-size: 70px;
+
 }
