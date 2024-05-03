@@ -10,6 +10,29 @@ function randomNote() {
     return notes[Math.floor(Math.random() * notes.length)];
 }
 
+const positions = [
+    { top: '10%', left: '10%' },
+    { top: '10%', left: '20%' },
+    { top: '20%', left: '30%' },
+    { top: '20%', left: '40%' },
+    { top: '30%', left: '50%' },
+    { top: '30%', left: '60%' },
+    { top: '40%', left: '70%' },
+    { top: '40%', left: '80%' },
+    { top: '45%', left: '70%' },
+    { top: '45%', left: '60%' },
+    { top: '40',  left: '50%' },
+    { top: '40%', left: '40%' },
+    { top: '30%', left: '30%' },
+    { top: '30%', left: '70%' },
+    { top: '20%', left: '10%' },
+    { top: '20%', left: '70%' },
+    { top: '10%', left: '30%' },
+    { top: '10%', left: '40%' },
+    
+
+];
+
 document.addEventListener("DOMContentLoaded", function() {
     const figureWrapper = document.createElement('figure');
     fetchRandomAgency(figureWrapper);
@@ -17,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function() {
     fetchRandomImage(figureWrapper);
    
 });
-
 
 
 
@@ -147,7 +169,22 @@ document.addEventListener('click', function() {
         fetchRandomAgency(figureWrapper);
         fetchRandomImage(figureWrapper); 
     }
+
+
+    const randomIndex = Math.floor(Math.random() * positions.length);
+    const newPosition = positions[randomIndex];
+    totalContainer.style.top = newPosition.top;
+    totalContainer.style.left = newPosition.left;
 });
+
+
+totalContainer.addEventListener('mouseover', function() {
+    const randomIndex = Math.floor(Math.random() * positions.length);
+    const newPosition = positions[randomIndex];
+    totalContainer.style.top = newPosition.top;
+    totalContainer.style.left = newPosition.left;
+});
+
 function updateGridRules (rows, cols) {
     imageContainer.style.gridTemplateRows = `repeat(${rows}, ${100 / rows}vh)`;
     imageContainer.style.gridTemplateColumns = `repeat(${cols}, ${100 / cols}vw)`;
