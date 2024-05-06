@@ -1,12 +1,11 @@
 let agencyList = ['005', '013', '089', '070', '015', '019', '020', '047', '080', '007'];
-let runningTotal = 0; 
-
+let runningTotal = 0;
 
 let imageContainer = document.querySelector('.image-container');
 let totalContainer = document.querySelector('.total-container');
 
 function randomNote() {
-    const notes = ['C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2']; 
+    const notes = ['C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2'];
     return notes[Math.floor(Math.random() * notes.length)];
 }
 
@@ -18,30 +17,30 @@ const positions = [
     { top: '30%', left: '50%' },
     { top: '30%', left: '60%' },
     { top: '40%', left: '70%' },
-    { top: '40%', left: '80%' },
-    { top: '45%', left: '70%' },
+    { top: '40%', left: '70%' },
+    { top: '45%', left: '60%' },
     { top: '45%', left: '60%' },
     { top: '40',  left: '50%' },
     { top: '40%', left: '40%' },
     { top: '30%', left: '30%' },
     { top: '30%', left: '70%' },
-    { top: '20%', left: '10%' },
-    { top: '20%', left: '70%' },
+    { top: '20%', left: '50%' },
+    { top: '20%', left: '60%' },
     { top: '10%', left: '30%' },
     { top: '10%', left: '40%' },
-    
-
 ];
+
+const breakpoints = {
+    small: 600, 
+    medium: 1024,
+};
 
 document.addEventListener("DOMContentLoaded", function() {
     const figureWrapper = document.createElement('figure');
     fetchRandomAgency(figureWrapper);
     fetchRandomImage(figureWrapper); 
     fetchRandomImage(figureWrapper);
-   
 });
-
-
 
 function fetchRandomAgency(figure) {
     let randomAgency = Math.floor(Math.random() * agencyList.length);
@@ -50,20 +49,15 @@ function fetchRandomAgency(figure) {
     fetch(API_URL)
     .then((response) => response.json())
     .then((data) => {
-
-
         let randomIndex = Math.floor(Math.random() * data.results.length);
         let randomItem = data.results[randomIndex];
 
         let obligatedAmount = parseFloat(randomItem.obligated_amount); 
         runningTotal += obligatedAmount; 
         totalContainer.innerText = `$${runningTotal.toFixed(2)}`;
-        console.log('running total', runningTotal)
 
-        
         let randomAgencyContainer = document.createElement("figcaption");
         randomAgencyContainer.classList.add("agency-caption");
-
 
         let itemCode = document.createElement("div");
         itemCode.innerText = `code: "${randomItem.code}"`
@@ -76,21 +70,15 @@ function fetchRandomAgency(figure) {
         randomAgencyContainer.appendChild(itemName);
         randomAgencyContainer.appendChild(itemAmount);
 
-
         figure.classList.add('image-figure')
         figure.appendChild(randomAgencyContainer)
-      
+
         imageContainer.appendChild(figure);
-
-
-  
     })
     .catch((error) => {
-
         figure.classList.add('error-image');
         figure.classList.add('image-figure');
 
-    
         let errorText = document.createElement("div");
         errorText.classList.add("error-text"); 
         errorText.innerText = "ERROR: AGENCY 007:'DEPARTMENT OF DEFENSE' DOES NOT EXIST"; 
@@ -99,7 +87,6 @@ function fetchRandomAgency(figure) {
 
         console.error('Error:', error);
         imageContainer.appendChild(figure);
-
     });
 }
 
@@ -110,24 +97,17 @@ function fetchRandomImage (figure) {
         let randomIndex = Math.floor(Math.random() * items.length);
         let randomItem = items[randomIndex];
 
-
         let image = document.createElement('img');
         image.src= randomItem.path
         figure.appendChild(image)
-
-    
-
     })
     .catch((error) => {
     });
 }
 
-
 let rowIncrement = 1;
 let columnCount = 1;
 let totalCount = 1;
-
-
 
 document.addEventListener('click', function() {
     function newSynth(){
@@ -141,15 +121,13 @@ document.addEventListener('click', function() {
                 sustain: 0.1,
                 release: 1
             }
-    
         }).toDestination();
     
         synth.volume.value = 15;
-    
         synth.triggerAttackRelease(randomNote(), "5");
     }
     newSynth();
-    
+
     totalCount += rowIncrement;
     columnCount = totalCount / rowIncrement;
 
@@ -160,9 +138,8 @@ document.addEventListener('click', function() {
         rowIncrement++
         columnCount = totalCount / rowIncrement;
     } 
-    updateGridRules(rowIncrement, columnCount)
-
-    console.log('rowIncrement: ' + rowIncrement, 'columnCount: ' + columnCount)
+    updateGridRules(rowIncrement, columnCount);
+    
 
     for (let i = 0; i < rowIncrement; i++) {
         const figureWrapper = document.createElement('figure');
@@ -170,13 +147,11 @@ document.addEventListener('click', function() {
         fetchRandomImage(figureWrapper); 
     }
 
-
     const randomIndex = Math.floor(Math.random() * positions.length);
     const newPosition = positions[randomIndex];
     totalContainer.style.top = newPosition.top;
     totalContainer.style.left = newPosition.left;
 });
-
 
 totalContainer.addEventListener('mouseover', function() {
     const randomIndex = Math.floor(Math.random() * positions.length);
@@ -185,12 +160,29 @@ totalContainer.addEventListener('mouseover', function() {
     totalContainer.style.left = newPosition.left;
 });
 
-function updateGridRules (rows, cols) {
+function updateGridRules(rows, cols) {
+    const screenWidth = window.innerWidth;
+    let fontSize;
+
+
+//used some ChatGPT here to help with getting this set up for mobile
+    if (screenWidth < breakpoints.small) {
+        cols = Math.min(cols, 4);
+        fontSize = 16; 
+    } else {
+        fontSize = 24; 
+    }
+    if (cols === 4) {
+        rows = Math.ceil(totalCount / cols);
+    }
+
+//the rest of this I did with the CD tutor!
+
     imageContainer.style.gridTemplateRows = `repeat(${rows}, ${100 / rows}vh)`;
     imageContainer.style.gridTemplateColumns = `repeat(${cols}, ${100 / cols}vw)`;
 
     const totalCells = rows * cols;
-    const fontSize = 50 / Math.sqrt(totalCells);
+    fontSize = 50 / Math.sqrt(totalCells);
 
     const agencyCaptions = document.querySelectorAll('.agency-caption');
     const errorTexts = document.querySelectorAll('.error-text');
@@ -204,7 +196,7 @@ function updateGridRules (rows, cols) {
         text.style.textAlign = 'justify';
     });
 }
- 
+
 
 /*
  013 = department of commerce
